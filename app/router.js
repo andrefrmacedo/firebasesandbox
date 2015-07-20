@@ -7,8 +7,8 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.resource('messages', function(){
-      this.route('myMessages');
-      this.route('addNewMessage');
+      this.route('mymessages');
+      this.route('new');
     });
 });
 

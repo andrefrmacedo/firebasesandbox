@@ -2,10 +2,10 @@ import Ember from "ember";
 
 export default Ember.Object.extend({
   open: function(authorization) {
-    let store = this.get("container").lookup("store:main");
+    let store = this.get("container").lookup("service:store");
 
     return new Ember.RSVP.Promise((resolve) => {
-      return store.find("user", authorization.uid).then(function(user){
+      return store.findRecord("user", authorization.uid).then(function(user){
         Ember.run.bind(null, resolve({currentUser: user}));
       }, () => {
         let newUser = store.createRecord("user", {
@@ -23,11 +23,11 @@ export default Ember.Object.extend({
   fetch: function() {
     let firebase = this.get("container").lookup("adapter:application").firebase;
     let authData = firebase.getAuth();
-    let store = this.get("container").lookup("store:main");
+    let store = this.get("container").lookup("service:store");
 
     return new Ember.RSVP.Promise(function(resolve, reject) {
       if(authData) {
-        store.find("user", authData.uid).then(function(user) {
+        store.findRecord("user", authData.uid).then(function(user) {
           Ember.run.bind(null, resolve({currentUser: user}));
         }, function() {
           Ember.run.bind(null, reject("no session"));
@@ -40,7 +40,7 @@ export default Ember.Object.extend({
 
   close: function() {
     let firebase = this.get("container").lookup("adapter:application").firebase;
-    let store = this.get("container").lookup("store:main");
+    let store = this.get("container").lookup("service:store");
 
     return new Ember.RSVP.Promise(function(resolve) {
       store.unloadAll("user");
