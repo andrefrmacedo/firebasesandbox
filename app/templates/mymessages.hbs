@@ -1,0 +1,7 @@
+{{#link-to 'messages'}}All Messages{{/link-to}}
+
+{{#each message in model}}
+	<div>
+		{{message.handle}} said: {{message.body}}
+	</div>
+{{/each}}

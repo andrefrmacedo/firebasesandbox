@@ -1,0 +1,14 @@
+<h3>If you got here it means you successfully authenticated</h3>
+<div>Your name is: {{session.currentUser.handle}}</div>
+
+{{#link-to 'messages.new'}}Add New Message{{/link-to}}
+{{#link-to 'mymessages'}}My Messages{{/link-to}}
+
+{{outlet}}
+
+
+{{#each message in model}}
+	<div>
+		{{message.handle}} said: {{message.body}}
+	</div>
+{{/each}}
