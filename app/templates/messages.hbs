@@ -2,8 +2,13 @@
 <div>Your name is: {{session.currentUser.handle}}</div>
 
 {{#link-to 'messages.new'}}Add New Message{{/link-to}}
-{{#link-to 'messages.mymessages'}}My Messages{{/link-to}}
+{{#link-to 'mymessages'}}My Messages{{/link-to}}
 
 {{outlet}}
 
 
+{{#each message in model}}
+	<div>
+		{{message.handle}} said: {{message.body}}
+	</div>
+{{/each}}
