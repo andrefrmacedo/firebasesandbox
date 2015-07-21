@@ -2,6 +2,7 @@
 
 {{#each model as |message|}}
 	<div>
+		<button{{action 'deleteMsg' message.id}}>Remove</button>
 		{{message.handle}} said: {{message.body}}
 	</div>
 {{/each}}
