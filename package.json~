@@ -35,7 +35,11 @@
     "ember-data": "1.13.5",
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.2",
+<<<<<<< HEAD
+    "emberfire": "firebase/emberfire#master",
+=======
     "emberfire": "1.4.7",
+>>>>>>> 8296afac0a5202a9a07a4352fa136acceacb1abb
     "torii": "0.5.1",
     "torii-fire": "0.2.2"
   }
