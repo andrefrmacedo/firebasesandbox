@@ -7,7 +7,7 @@
 {{outlet}}
 
 
-{{#each message in model}}
+{{#each model as |message|}}
 	<div>
 		{{message.handle}} said: {{message.body}}
 	</div>
