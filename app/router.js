@@ -11,6 +11,7 @@ Router.map(function() {
       this.route('new');
     });
   this.route('mymessages');
+  this.route('charts');
 });
 
 export default Router;
