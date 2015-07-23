@@ -1,20 +1,4 @@
 {{#link-to 'messages'}}Back{{/link-to}}<br>
 
-
-{{ember-chart type='Bar' data=dataBar width=500 height=300}}
-
-{{#if display}}
-	{{ember-chart type=type data=dataBar width=500 height=300}}
-{{else}}
-	{{ember-chart type=type data=dataBar width=500 height=300}}
-{{/if}}
-
-<button{{action 'addData'}}>Add new Month</button>
-<button{{action 'changeGraph'}}>Change Graph</button>
-
-{{ember-chart type='Radar' data=dataBar width=500 height=300}}
-{{ember-chart type='Pie' data=dataPie width=500 height=300}}
-{{ember-chart type='PolarArea' data=dataPie width=500 height=300}}
-
-
-
+{{bar-chart}}
+{{pie-chart}}

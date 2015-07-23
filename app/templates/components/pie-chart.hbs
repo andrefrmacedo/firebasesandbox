@@ -1,0 +1,8 @@
+
+{{#if isDisplayed}}
+	<button{{action 'display'}}>Hide Pie Chart</button><br>
+	{{ember-chart type=type data=data width=500 height=300}}
+{{else}}
+	<button{{action 'display'}}>Show Pie Chart</button>
+{{/if}}
+
