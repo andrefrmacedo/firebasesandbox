@@ -24,12 +24,7 @@ export default Ember.Component.extend({
 
     actions:{
     	display: function(){
-    		if(this.isDisplayed){
-    			this.set('isDisplayed',false);
-    		}
-    		else{
-    			this.set('isDisplayed',true);
-    		}
+    		this.toggleProperty('isDisplayed');
     	}
     }
 });
