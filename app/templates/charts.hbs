@@ -1,6 +1,11 @@
 {{#link-to 'messages'}}Back{{/link-to}}<br>
 
 
+{{#each model as |item|}}
+	{{item.month}}: {{item.value}}<br>
+{{/each}}
+
 
 {{bar-chart store=model}}
-{{pie-chart}}
+<br>
+{{pie-chart store=model}}

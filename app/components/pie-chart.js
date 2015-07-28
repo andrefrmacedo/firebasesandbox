@@ -1,30 +1,23 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	type: 'Pie',
+	
+    type: 'Pie',
 
-	data: [{
-        value: 66,
-        color:"#F7464A",
-        highlight: "#FF5A5E",
-        label: "Red"
-    }, {
-        value: 11,
-        color: "#46BFBD",
-        highlight: "#5AD3D1",
-        label: "Green"
-    }, {
-        value: 23,
-        color: "#FDB45C",
-        highlight: "#FFC870",
-        label: "Yellow"
-    }],
+    display: true,
 
-    isDisplayed: true,
+    data: function(){
+        var dataStructure=[];
 
-    actions:{
-    	display: function(){
-    		this.toggleProperty('isDisplayed');
-    	}
-    }
+        this.get('store').map(item => {
+            dataStructure.push({
+                label: item.get('month'),
+                value: item.get('value'),   
+                highlight: "#FFC870",   //you can get the color from a 
+                color:"#F7464A"         //function or an array or colors
+            });
+        });
+        return dataStructure;
+    }.property('store'),
+
 });

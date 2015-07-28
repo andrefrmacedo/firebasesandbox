@@ -1,11 +1,10 @@
+{{ember-chart type=type data=data width=500 height=300}}
 
-
-{{#if display}}
-	{{ember-chart type=type data=data width=500 height=300}}
-	<!--<button{{action 'addData'}}>Add Compare Data</button>-->
-{{else}}
-	{{ember-chart type=type data=data width=500 height=300}}
-{{/if}}
-
+{{!if statement not needed if there is no data changes}}
+{{!#if display}}
+	{{!ember-chart type=type data=data width=500 height=300}}
+{{!!else}}
+	{{!ember-chart type=type data=data width=500 height=300}}
+{{!/if}}
 
 
