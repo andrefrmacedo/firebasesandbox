@@ -10,7 +10,8 @@ export default Ember.Object.extend({
       }, () => {
         let newUser = store.createRecord("user", {
           id: authorization.uid,
-          handle: this._handleFor(authorization)
+          handle: this._handleFor(authorization),
+          api: {},
         });
 
         newUser.save().then(function(user) {
