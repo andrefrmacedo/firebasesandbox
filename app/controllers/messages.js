@@ -28,8 +28,26 @@ export default Ember.Controller.extend({
 				});
 			}
 			
-			this.store.query('fitbit',{});
-			//not complete
+			//this.store.query('fitbit',{});
+			
+			self=this;
+			Ember.$.ajax({
+				url: 'https://api.fitbit.com/1/user/-/profile.json',
+				type: 'GET',
+
+				headers:{
+					'Authorization': 'Bearer ' + this.get('session.currentUser.accounts.fitbit'),
+				},
+
+				success: function(data){
+					self.set('fitbitResponse',data.user);
+				},
+				error: function(data){
+					console.log(data);
+				},
+			});
+
+			
 		},
 
 	}

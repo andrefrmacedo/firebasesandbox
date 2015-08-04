@@ -1,11 +1,18 @@
 <h3>If you got here it means you successfully authenticated</h3>
 <div>Your name is: {{session.currentUser.handle}}</div>
 
+<br>
+{{#if fitbitResponse}}
+	<div><b>Fitbit Data:</b></div>
+	<div>Display Name: {{fitbitResponse.displayName}}</div>
+	<div>Height: {{fitbitResponse.height}}</div>
+	<div>Weight: {{fitbitResponse.weight}}</div>
+{{/if}}
+<br>
+
 {{#link-to 'messages.new'}}Add New Message{{/link-to}}
 {{#link-to 'mymessages'}}My Messages{{/link-to}}
 {{#link-to 'charts'}}Charts{{/link-to}}
-
-
 
 
 {{#if gotAccess}}
