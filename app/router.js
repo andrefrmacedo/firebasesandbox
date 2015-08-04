@@ -12,6 +12,7 @@ Router.map(function() {
     });
   this.route('mymessages');
   this.route('charts');
+  this.route('transition');
 });
 
 export default Router;

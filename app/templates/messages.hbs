@@ -4,7 +4,15 @@
 {{#link-to 'messages.new'}}Add New Message{{/link-to}}
 {{#link-to 'mymessages'}}My Messages{{/link-to}}
 {{#link-to 'charts'}}Charts{{/link-to}}
-<button {{action 'fitbitPermission'}}>Give fitbit permission</button>
+
+
+
+
+{{#if gotAccess}}
+	<button {{action 'fitbit' session.currentUser.accounts.fitbit}}>fitbit data</button>
+{{else}}
+	<a href={{url}}>Give fitbit permission</a>
+{{/if}}
 
 {{outlet}}
 

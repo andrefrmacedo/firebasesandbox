@@ -11,9 +11,8 @@ export default Ember.Object.extend({
         let newUser = store.createRecord("user", {
           id: authorization.uid,
           handle: this._handleFor(authorization),
-          api: {},
+          accounts: {},
         });
-
         newUser.save().then(function(user) {
           Ember.run.bind(null, resolve({currentUser: user}));
         });

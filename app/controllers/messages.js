@@ -1,31 +1,37 @@
 import Ember from 'ember';
+import Firebase from 'firebase';
 
 export default Ember.Controller.extend({
-	actions:{
-		fitbitPermission: function(){
-			if(this.session.get('currentUser.api.fitbit')===undefined){
-				Ember.$.ajax({
-					headers: {
-						'Access-Control-Allow-Origin': '*',
-					},
-					type: 'GET',
-					url: 'https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=229MLM&redirect_uri=http%3A%2F%2Flocalhost%3A4200&scope=profile',
-					//response_type: 'code',
-					//client_id: '229MLM',
-					//redirect_uri: 'http://localhost:4200',
-					//scope: 'profile',
 
-					success: function(){
-						console.log('fitbit permission page');
-					},
-					error: function(){
-						console.log('erro');
-					},
+	url: 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=229MLM&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Ftransition&scope=profile&expires_in=2592000',
+	queryParams: ['access_token'],
+
+	gotAccess: function(){
+		if(this.get('session.currentUser.accounts.fitbit') || this.access_token){
+			return true;
+		}
+		return false;
+	}.property('session','access_token'),
+
+	actions:{
+
+		fitbit: function(fitbitAccess){
+			if(fitbitAccess===undefined){
+				var ref=new Firebase('https://sandboxfirebase.firebaseio.com/users/'+this.get('session.currentUser.id'));
+				ref.update({
+					accounts: {
+						fitbit: this.get('access_token'),
+					}
+				});
+				this.set('session.currentUser.accounts',{
+					fitbit:this.get('access_token')
 				});
 			}
-			else{
-				console.log('Already have fitbit permission');
-			}
-		}
+			
+			this.store.query('fitbit',{});
+			//not complete
+		},
+
 	}
+
 });

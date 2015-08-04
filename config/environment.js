@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'firebasesandbox',
     environment: environment,
     contentSecurityPolicy: { 
-      'connect-src': "'self' wss://*.firebaseio.com https://www.fitbit.com",
+      'connect-src': "'self' wss://*.firebaseio.com https://*.fitbit.com",
     },
     firebase: 'https://sandboxfirebase.firebaseio.com/',
     torii: {
