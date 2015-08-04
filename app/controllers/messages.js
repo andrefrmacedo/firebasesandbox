@@ -28,8 +28,6 @@ export default Ember.Controller.extend({
 				});
 			}
 			
-			//this.store.query('fitbit',{});
-			
 			self=this;
 			Ember.$.ajax({
 				url: 'https://api.fitbit.com/1/user/-/profile.json',
