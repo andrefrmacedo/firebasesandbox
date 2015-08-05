@@ -28,7 +28,7 @@ export default Ember.Controller.extend({
 				});
 			}
 			
-			self=this;
+			var self=this;
 			Ember.$.ajax({
 				url: 'https://api.fitbit.com/1/user/-/profile.json',
 				type: 'GET',
